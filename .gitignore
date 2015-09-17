@@ -1,5 +1,7 @@
 db_qual.py
-
+.idea
+expiration_*
+import_*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

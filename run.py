@@ -12,8 +12,8 @@ init()
 CREATESEND_API_KEY = 'INSERT_API_KEY_HERE'
 NUM_CUSTOM_FIELDS = 35
 
-#This class is used to map SQL Tables/Views to a Python class.
-#More complex API calls will probably need more than one table
+# This class is used to map SQL Tables/Views to a Python class.
+# More complex API calls will probably need more than one table
 class Map(object):
     pass
 
@@ -103,9 +103,23 @@ def get_oracle_segment_ids():
     """
     ret = []
 
-    res = session.query(SegmentMap.id).all()
-    for seg in res:
-        ret.append(seg[0])
+    # res = session.query(SegmentMap.id).all()
+    # for seg in res:
+    #     ret.append(seg[0])
+
+    ret = [
+        6282,
+        # CAS parents 4:55am
+        13393,
+        # CAPS ------ 4:58am
+        6322,
+        # GS -------- 5:05am
+        6323,
+        # Sem ------- 5:09am
+        6342,
+        # EnrChecklistNew
+        13842
+    ]
 
     return ret
 
@@ -405,7 +419,7 @@ def handle_segment_expiration(seg):
     :return: boolean, boolean (attempted expiration, expiration succeeded)
     """
     present = date.today()
-    print (Fore.GREEN + str(seg.expires) + Fore.RESET)
+    print (Fore.GREEN + "Segment Expiration: " + str(seg.expires) + Fore.RESET)
     if seg.expires is None or seg.expires >= present:
         return False, False
     else:
